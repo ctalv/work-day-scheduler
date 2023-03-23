@@ -17,12 +17,13 @@ $(function () {
   // current hour in 24-hour time?
   function timeblock() {
     var hour = today.format('h');
+    var amPm = today.format('a');
 
     var timeblockClass = $('.time-block');
     var businessHours = [];
-    // var hourCompare = "hour-"+hour;
+    var hourCompare = "hour-"+hour;
     // TESTING Hardcode
-    var hourCompare = "hour-1";
+    // var hourCompare = "hour-1";
     for (i = 0; i < 9; i++) {
       // at hour X compare if current
       var hourId = timeblockClass[i].id;
@@ -35,19 +36,20 @@ $(function () {
     }
 
     for (i = 0; i < 9; i++) {
-      // // assume user is starting next day (ask in class)
-      // if (!indexPoint) {
-      //   timeblockClass[i].classList.add("future");
-      // }
+      // if user is using webpage not during business hours
+      if (!indexPoint && (amPm === 'am')) { // morning
+        timeblockClass[i].classList.add("future");
+      } else if(!indexPoint && (amPm === 'pm')) { // evening
+        timeblockClass[i].classList.add("past");
+      }
 
+      // if user is using webpage during business hours
       if (i < indexPoint) {
         timeblockClass[i].classList.add("past");
-
       } else if (i > indexPoint) {
         timeblockClass[i].classList.add("future");
       }
     }
-
 
   }
 
