@@ -10,13 +10,13 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-var saveButtonEl = $('.btn')
-saveButtonEl.on('click', saveText());
+  var saveButtonEl = $('.btn')
+  saveButtonEl.on('click', saveText());
 
-function saveText() {
-  console.log("saved")
-}
-  
+  function saveText() {
+    console.log("saved")
+  }
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -27,7 +27,7 @@ function saveText() {
     var amPm = today.format('a');
 
     var businessHours = [];
-    var hourCompare = "hour-"+hour;
+    var hourCompare = "hour-" + hour;
     // TESTING Hardcode
     // var hourCompare = "hour-1";
     for (i = 0; i < 9; i++) {
@@ -37,23 +37,25 @@ function saveText() {
       if (hourCompare === hourId) {
         timeblockClass[i].classList.add("present")
         var indexPoint = i
-      }
+      } 
 
     }
 
     for (i = 0; i < 9; i++) {
       // if user is using webpage not during business hours
-      if (!indexPoint && (amPm === 'am')) { // morning
-        timeblockClass[i].classList.add("future");
-      } else if(!indexPoint && (amPm === 'pm')) { // evening
+       if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
+        timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("past");
-      }
-
-      // if user is using webpage during business hours
-      if (i < indexPoint) {
-        timeblockClass[i].classList.add("past");
-      } else if (i > indexPoint) {
+      } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
+        timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("future");
+      } else {
+        // if user is using webpage during business hours
+        if (i < indexPoint) {
+          timeblockClass[i].classList.add("past");
+        } else if (i > indexPoint) {
+          timeblockClass[i].classList.add("future");
+        }
       }
     }
 
