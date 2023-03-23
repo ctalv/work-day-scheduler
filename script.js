@@ -28,7 +28,7 @@ $(function () {
     console.log(button)
 
     button.addEventListener('click', function () {
-      var clickedSaveButton = this.previousElementSibling.textContent;
+      var clickedSaveButton = this.previousElementSibling.value;
       console.log(clickedSaveButton)
 
     })
