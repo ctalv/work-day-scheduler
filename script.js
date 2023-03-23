@@ -15,12 +15,51 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  //
+  function colorCode() {
+    var hour = today.format('h');
+    var amPm = today.format('a');
+
+    var timeblockClass = $('.time-block');
+    var businessHours = [];
+    var hourCompare = "hour-"+hour;
+    // TESTING Hardcode
+    // var hourCompare = "hour-1";
+    for (i = 0; i < 9; i++) {
+      // at hour X compare if current
+      var hourId = timeblockClass[i].id;
+      businessHours.push(hourId)
+      if (hourCompare === hourId) {
+        timeblockClass[i].classList.add("present")
+        var indexPoint = i
+      }
+
+    }
+
+    for (i = 0; i < 9; i++) {
+      // if user is using webpage not during business hours
+      if (!indexPoint && (amPm === 'am')) { // morning
+        timeblockClass[i].classList.add("future");
+      } else if(!indexPoint && (amPm === 'pm')) { // evening
+        timeblockClass[i].classList.add("past");
+      }
+
+      // if user is using webpage during business hours
+      if (i < indexPoint) {
+        timeblockClass[i].classList.add("past");
+      } else if (i > indexPoint) {
+        timeblockClass[i].classList.add("future");
+      }
+    }
+
+  }
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  $('#currentDay').text(today.format('MMMM D, YYYY'));  
+  $('#currentDay').text(today.format('dddd, MMMM D, YYYY'));
 
+
+  colorCode();
 });
