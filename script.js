@@ -6,10 +6,8 @@ $(function () {
   var timeblockClass = $('.time-block');
   var saveButtontEl = $('button')
 
-  // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
-  var textArraySaved = Array(timeblockClass.length).fill("");
-
-
+  console.log(timeblockClass)
+  console.log(timeblockClass[0].children[1].innerHTML)
 
   if (window.localStorage.getItem('savedTextObj') === null) {
     var savedTextObj = {
@@ -29,25 +27,27 @@ $(function () {
     var savedTextObj = JSON.parse(window.localStorage.getItem("savedTextObj"))
     console.log(savedTextObj[0])
     console.log("2")
+
     for (i = 0; i < timeblockClass.length; i++) {
-      console.log(i)
+      var savedTextSingle = savedTextObj[timeblockClass[i].id]
+      var textareaAddBack = timeblockClass[i].children[1]
+      textareaAddBack.innerHTML = savedTextSingle
+      // textareaAddBack.textContent = savedTextSingle
+      console.log(textareaAddBack)
+      console.log(savedTextSingle)
       console.log(timeblockClass[i].id)
-      for (j = 0; i < timeblockClass.length; i++) {
-        var hoursObj = [9,10,11,12,1,2,3,4,5]
-        var compareObj = savedTextObj[timeblockClass[i].id]
-        console.log(compareObj)
-        if (timeblockClass[i].id === compareObj) {
-        console.log(timeblockClass[i].id)
-        console.log('worked')
-        }
+
+      console.log(timeblockClass[i].children.textarea)
+      console.log(timeblockClass[i].textarea)
+
+
       }
     }
 
-  }
 
-  console.log(compareObj)
+  
 
-  console.log(textArraySaved)
+
   console.log(savedTextObj)
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -67,17 +67,11 @@ $(function () {
         var textareaHTML = this.previousElementSibling;
         textareaHTML.textContent = clickedSaveButton
         var index = $('.container-fluid').index(timeblockClass)
-        console.log(index)
-        console.log($('.container-fluid'))
-        console.log(textareaHTML.textContent)
-        console.log(textareaHTML.parentNode.id)
-        console.log(clickedSaveButton)
-        console.log(textareaHTML)
-        console.log(timeblockClass)
 
         savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
-
         window.localStorage.setItem('savedTextObj', JSON.stringify(savedTextObj));
+        console.log(timeblockClass);
+        console.log(timeblockClass[0].children[1].innerHTML)
 
       })
     }
