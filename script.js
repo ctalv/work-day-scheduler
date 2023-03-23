@@ -8,17 +8,23 @@ $(function () {
 
   // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
   var textArraySaved = Array(timeblockClass.length).fill("");
-  var savedTextObj = {
-    'hour-9': '',
-    'hour-10': '',
-    'hour-11': '',
-    'hour-12': '',
-    'hour-1': '',
-    'hour-2': '',
-    'hour-3': '',
-    'hour-4': '',
-    'hour-5': '',
+
+  if (window.localStorage.getItem('savedTextObj') === null) {
+    var savedTextObj = {
+      'hour-9': '',
+      'hour-10': '',
+      'hour-11': '',
+      'hour-12': '',
+      'hour-1': '',
+      'hour-2': '',
+      'hour-3': '',
+      'hour-4': '',
+      'hour-5': '',
+    }
+  } else {
+    var savedTextObj = JSON.parse(localStorage.getItem("savedTextObj"))
   }
+
  
   console.log(textArraySaved)
   console.log(savedTextObj)
@@ -52,7 +58,8 @@ $(function () {
       savedTextObj[textareaHTML.parentNode.id] = textareaHTML.textContent
 
       console.log(savedTextObj)
-      // localStorage.setItem('textArraySaved', JSON.stringify(textArraySaved));
+      var stringObj = JSON.stringify(savedTextObj)
+      window.localStorage.setItem('savedSchedule', stringObj);
       
     })
   }
