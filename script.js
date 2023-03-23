@@ -39,6 +39,7 @@ $(function () {
     console.log(hourId)
     if (hourCompare === hourId) {
       console.log("present");
+      // timeblockClass[i].classList.add("present")
       var indexPoint = i
     }
 
@@ -46,13 +47,15 @@ $(function () {
 
   for (i = 0; i < 9; i++) {
     if (i < indexPoint) {
-      console.log("past")
+      console.log("past");
+
     } else if (i > indexPoint) {
-      console.log("future")
+      console.log("future");
+
     }
   }
 
-    console.log(indexPoint)
+  console.log(indexPoint)
   console.log(hourCompare);
   console.log(timeblockClass)
   console.log(hourId)
