@@ -39,15 +39,13 @@ $(function () {
     console.log(hourId)
     if (hourCompare === hourId) {
       console.log("present");
-      
+      var indexPoint = i
     } 
-    // } else if (hourCompare < hour) {
-    //   // console.log("past");
-    // } else {
-    //   // console.log("present");
-    // }
 
   }
+
+  
+  console.log(indexPoint)
   console.log(hourCompare);
   console.log(timeblockClass)
   console.log(hourId)
