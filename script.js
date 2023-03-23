@@ -9,6 +9,8 @@ $(function () {
   // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
   var textArraySaved = Array(timeblockClass.length).fill("");
 
+
+
   if (window.localStorage.getItem('savedTextObj') === null) {
     var savedTextObj = {
       'hour-9': '',
@@ -20,17 +22,28 @@ $(function () {
       'hour-3': '',
       'hour-4': '',
       'hour-5': '',
-      
+
     }
     console.log("1")
   } else {
     var savedTextObj = JSON.parse(window.localStorage.getItem("savedTextObj"))
-    console.log(savedTextObj)
+    console.log(savedTextObj[0])
     console.log("2")
-    
+    for (i = 0; i < timeblockClass.length; i++) {
+      console.log(i)
+      console.log(timeblockClass[i].id)
+      for (j = 0; i < timeblockClass.length; i++) {
+        var compareObj = savedTextObj[Object.keys(savedTextObj)[j]];
+        if (timeblockClass[i].id === compareObj) {
+        console.log(timeblockClass[i].id)
+        console.log('worked')
+        }
+      }
+    }
+
   }
 
- 
+
   console.log(textArraySaved)
   console.log(savedTextObj)
   // TODO: Add a listener for click events on the save button. This code should
@@ -41,45 +54,46 @@ $(function () {
   // useful when saving the description in local storage?
   function enterEvent() {
 
-  for (i = 0; i < 9; i++) {
-    // at each button
-    // create an event listener
-    var button = saveButtontEl[i]
+    for (i = 0; i < 9; i++) {
+      // at each button
+      // create an event listener
+      var button = saveButtontEl[i]
 
-    button.addEventListener('click', function () {
-      var clickedSaveButton = this.previousElementSibling.value;
-      var textareaHTML = this.previousElementSibling;
-      textareaHTML.textContent = clickedSaveButton
-      var index = $('.container-fluid').index(timeblockClass)
-      console.log(index)
-      console.log($('.container-fluid'))
-      console.log(textareaHTML.textContent)
-      console.log(textareaHTML.parentNode.id)
-      console.log(clickedSaveButton)
-      console.log(textareaHTML)
-      console.log(timeblockClass)
-      savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
+      button.addEventListener('click', function () {
+        var clickedSaveButton = this.previousElementSibling.value;
+        var textareaHTML = this.previousElementSibling;
+        textareaHTML.textContent = clickedSaveButton
+        var index = $('.container-fluid').index(timeblockClass)
+        console.log(index)
+        console.log($('.container-fluid'))
+        console.log(textareaHTML.textContent)
+        console.log(textareaHTML.parentNode.id)
+        console.log(clickedSaveButton)
+        console.log(textareaHTML)
+        console.log(timeblockClass)
 
-      window.localStorage.setItem('savedTextObj', JSON.stringify(savedTextObj));
-      
-    })
+        savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
+
+        window.localStorage.setItem('savedTextObj', JSON.stringify(savedTextObj));
+
+      })
+    }
+
   }
-  
-}
 
 
-// check if anything in local storage and load in if there is
+  // check if anything in local storage and load in if there is
 
-// add to array anything that is saved in its correct spot
-// figure out where in the DOM we are
-// in an array, add in that location
-// save array in local storage
+  // add to array anything that is saved in its correct spot
+  // figure out where in the DOM we are
+  // in an array, add in that location
+  // save array in local storage
 
-// on refresh, add the locally stored stuff back in their correct spots
+  // on refresh, add the locally stored stuff back in their correct spots
 
-function localStorage () {
+  function localStorage() {
 
-}
+  }
 
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -109,10 +123,10 @@ function localStorage () {
 
     for (i = 0; i < 9; i++) {
       // if user is using webpage not during business hours
-      if (hour === (6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
+      if (hour === (6 || 7 || 8 || 9 || 10 || 11) && amPm === 'pm') {
         timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("past");
-      } else if (hour === (12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
+      } else if (hour === (12 || 1 || 2 || 3 || 4 || 5) && amPm === 'am') {
         timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("future");
       } else {
