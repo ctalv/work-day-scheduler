@@ -59,15 +59,12 @@ $(function () {
 
     }
 
-    console.log(hour)
-    console.log(amPm)
-
     for (i = 0; i < 9; i++) {
       // if user is using webpage not during business hours
-      if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
+      if (hour === (6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
         timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("past");
-      } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
+      } else if (hour === (12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
         timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("future");
       } else {
