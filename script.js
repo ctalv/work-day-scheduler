@@ -8,8 +8,20 @@ $(function () {
 
   // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
   var textArraySaved = Array(timeblockClass.length).fill("");
+  var savedTextObj = {
+    'hour-9': '',
+    'hour-10': '',
+    'hour-11': '',
+    'hour-12': '',
+    'hour-1': '',
+    'hour-2': '',
+    'hour-3': '',
+    'hour-4': '',
+    'hour-5': '',
+  }
  
   console.log(textArraySaved)
+  console.log(savedTextObj)
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -37,21 +49,9 @@ $(function () {
       console.log(textareaHTML)
       console.log(timeblockClass)
 
-      var savedTextObj = {
-        'hour-9': '',
-        'hour-10': '',
-        'hour-11': '',
-        'hour-12': '',
-        'hour-1': '',
-        'hour-2': '',
-        'hour-3': '',
-        'hour-4': '',
-        'hour-5': '',
-      }
+      savedTextObj[textareaHTML.parentNode.id] = textareaHTML.textContent
 
-
-      textArraySaved[0] = textareaHTML.textContent
-      console.log(textArraySaved)
+      console.log(savedTextObj)
       // localStorage.setItem('textArraySaved', JSON.stringify(textArraySaved));
       
     })
