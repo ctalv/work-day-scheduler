@@ -28,18 +28,24 @@ $(function () {
 
   var timeblockClass = $('.time-block');
   var businessHours = [];
-  var hourCompare = "hour-"+hour;
+  // var hourCompare = "hour-"+hour;
+  // TESTING
+  var hourCompare = "hour-4";
   for (i = 0; i < 9; i++)  {
     // at hour X compare if current
     var hourId = timeblockClass[i].id;
     businessHours .push(hourId)
-    if (hourCompare > hour) {
-      console.log("future");
-    } else if (hourCompare < hour) {
-      console.log("past");
-    } else {
+    console.log(hourCompare)
+    console.log(hourId)
+    if (hourCompare === hourId) {
       console.log("present");
-    }
+      
+    } 
+    // } else if (hourCompare < hour) {
+    //   // console.log("past");
+    // } else {
+    //   // console.log("present");
+    // }
 
   }
   console.log(hourCompare);
