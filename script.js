@@ -6,7 +6,9 @@ $(function () {
   var timeblockClass = $('.time-block');
   var saveButtontEl = $('button')
 
-  var textArraySaved = Array(timeblockClass.length)
+  // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
+  var textArraySaved = Array(timeblockClass.length).fill("");
+ 
   console.log(textArraySaved)
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -25,11 +27,21 @@ $(function () {
       var clickedSaveButton = this.previousElementSibling.value;
       var textareaHTML = this.previousElementSibling;
       textareaHTML.textContent = clickedSaveButton
+
+      console.log($('.container-fluid').index(timeblockClass.index(textareaHTML)))
+
+      console.log(textareaHTML.textContent)
+      console.log(textareaHTML.parentNode.id)
       console.log(clickedSaveButton)
+      console.log(textareaHTML)
+      console.log(timeblockClass)
 
-      localStorage.setItem('test', JSON.stringify(clickedSaveButton));
-      // 
 
+
+      textArraySaved[0] = textareaHTML.textContent
+      console.log(textArraySaved)
+      // localStorage.setItem('textArraySaved', JSON.stringify(textArraySaved));
+      
     })
   }
   
@@ -37,7 +49,12 @@ $(function () {
 
 
 // check if anything in local storage and load in if there is
+
 // add to array anything that is saved in its correct spot
+// figure out where in the DOM we are
+// in an array, add in that location
+// save array in local storage
+
 // on refresh, add the locally stored stuff back in their correct spots
 
 function localStorage () {
