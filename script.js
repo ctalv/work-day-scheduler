@@ -23,16 +23,13 @@ $(function () {
     // create an event listener
     var button = saveButtontEl[i]
     var singleTextarea = textareaEl[i]
-    console.log(singleTextarea )
-    console.log(button)
-    
-    button.addEventListener('click', function () {
-      
-      console.log(saveButtontEl);
-      console.log("saved" + button);
-      console.log(button);
-      // textareaEl.textContent = userTextEl.value
 
+    console.log(singleTextarea)
+    console.log(button)
+
+    button.addEventListener('click', function () {
+      var clickedSaveButton = this.previousElementSibling.textContent;
+      console.log(clickedSaveButton)
 
     })
   }
@@ -50,16 +47,20 @@ $(function () {
     var hourCompare = "hour-" + hour;
     // TESTING Hardcode
     // var hourCompare = "hour-1";
+    console.log(hourCompare)
     for (i = 0; i < 9; i++) {
       // at hour X compare if current
       var hourId = timeblockClass[i].id;
       businessHours.push(hourId)
       if (hourCompare === hourId) {
         timeblockClass[i].classList.add("present")
-        var indexPoint = i
+        var indexPoint = i;
       }
 
     }
+
+    console.log(hour)
+    console.log(amPm)
 
     for (i = 0; i < 9; i++) {
       // if user is using webpage not during business hours
