@@ -15,52 +15,42 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  function timeblock() {
+    var hour = today.format('h');
 
-  var hour = today.format('h');
-  console.log(hour);
+    var timeblockClass = $('.time-block');
+    var businessHours = [];
+    // var hourCompare = "hour-"+hour;
+    // TESTING Hardcode
+    var hourCompare = "hour-1";
+    for (i = 0; i < 9; i++) {
+      // at hour X compare if current
+      var hourId = timeblockClass[i].id;
+      businessHours.push(hourId)
+      if (hourCompare === hourId) {
+        timeblockClass[i].classList.add("present")
+        var indexPoint = i
+      }
 
-  // compare each id to current time
-  // make array of business hours
-  // assign id to a particular hour using for loop
-  // if id > current time, class = future
-  // if id < current time, class = past
-  // else, present
-
-  var timeblockClass = $('.time-block');
-  var businessHours = [];
-  // var hourCompare = "hour-"+hour;
-  // TESTING
-  var hourCompare = "hour-4";
-  for (i = 0; i < 9; i++) {
-    // at hour X compare if current
-    var hourId = timeblockClass[i].id;
-    businessHours.push(hourId)
-    console.log(hourCompare)
-    console.log(hourId)
-    if (hourCompare === hourId) {
-      console.log("present");
-      timeblockClass[i].classList.add("present")
-      var indexPoint = i
     }
+
+    for (i = 0; i < 9; i++) {
+      // // assume user is starting next day (ask in class)
+      // if (!indexPoint) {
+      //   timeblockClass[i].classList.add("future");
+      // }
+
+      if (i < indexPoint) {
+        timeblockClass[i].classList.add("past");
+
+      } else if (i > indexPoint) {
+        timeblockClass[i].classList.add("future");
+      }
+    }
+
 
   }
 
-  for (i = 0; i < 9; i++) {
-    if (i < indexPoint) {
-      console.log("past");
-      timeblockClass[i].classList.add("past");
-
-    } else if (i > indexPoint) {
-      console.log("future");
-      timeblockClass[i].classList.add("future")
-    }
-  }
-
-  console.log(indexPoint)
-  console.log(hourCompare);
-  console.log(timeblockClass)
-  console.log(hourId)
-  console.log(businessHours)
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
@@ -68,4 +58,6 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM D, YYYY'));
 
+
+  timeblock();
 });
