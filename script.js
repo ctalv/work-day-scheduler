@@ -16,7 +16,7 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   
-  var hour = today.format('h');
+  var hour = today.format('hh a');
   console.log(hour)
 
   // compare each id to current time
@@ -32,7 +32,13 @@ $(function () {
     // at hour X compare if current
     var hourTimeblock = hourIds[i]
     var hourCompare = businessHours[i]
-    
+    if (hourCompare > hour) {
+      console.log("future")
+    } else if (hourCompare < hour) {
+      console.log("past")
+    } else {
+      console.log("present")
+    }
 
   }
 
