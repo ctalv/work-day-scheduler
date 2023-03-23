@@ -10,11 +10,31 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  var saveButtonEl = $('.btn')
-  saveButtonEl.on('click', saveText());
 
+
+  // identify which save button is pressed
+  // 
+
+  // var saveButtonEl = $('.btn')
+  var saveButtontEl = $('button')
+  for (i = 0; i < 9; i++) {
+    // at each button
+    // create an event listener
+    var button = saveButtontEl[i]
+
+    console.log(button)
+    button.addEventListener('click',function () {
+      saveText()
+    })
+
+  }
+
+  console.log(saveButtontEl)
   function saveText() {
     console.log("saved")
+    var userTextEl = timeblockClass[0].id.textarea
+    console.log(userTextEl)
+
   }
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -37,13 +57,13 @@ $(function () {
       if (hourCompare === hourId) {
         timeblockClass[i].classList.add("present")
         var indexPoint = i
-      } 
+      }
 
     }
 
     for (i = 0; i < 9; i++) {
       // if user is using webpage not during business hours
-       if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
+      if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
         timeblockClass[indexPoint].classList.remove("present");
         timeblockClass[i].classList.add("past");
       } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
