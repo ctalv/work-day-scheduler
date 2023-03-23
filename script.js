@@ -17,24 +17,24 @@ $(function () {
 
   // var saveButtonEl = $('.btn')
   var saveButtontEl = $('button')
+  var textareaEl = $('textarea')
   for (i = 0; i < 9; i++) {
     // at each button
     // create an event listener
     var button = saveButtontEl[i]
-
+    var singleTextarea = textareaEl[i]
+    console.log(singleTextarea )
     console.log(button)
-    button.addEventListener('click',function () {
-      saveText()
+    
+    button.addEventListener('click', function () {
+      
+      console.log(saveButtontEl);
+      console.log("saved" + button);
+      console.log(button);
+      // textareaEl.textContent = userTextEl.value
+
+
     })
-
-  }
-
-  console.log(saveButtontEl)
-  function saveText() {
-    console.log("saved")
-    var userTextEl = timeblockClass[0].id.textarea
-    console.log(userTextEl)
-
   }
 
   // TODO: Add code to apply the past, present, or future class to each time
