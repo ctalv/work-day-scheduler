@@ -20,9 +20,14 @@ $(function () {
       'hour-3': '',
       'hour-4': '',
       'hour-5': '',
+      
     }
+    console.log("1")
   } else {
-    var savedTextObj = JSON.parse(localStorage.getItem("savedTextObj"))
+    var savedTextObj = JSON.parse(window.localStorage.getItem("savedTextObj"))
+    console.log(savedTextObj)
+    console.log("2")
+    
   }
 
  
@@ -48,18 +53,14 @@ $(function () {
       var index = $('.container-fluid').index(timeblockClass)
       console.log(index)
       console.log($('.container-fluid'))
-
       console.log(textareaHTML.textContent)
       console.log(textareaHTML.parentNode.id)
       console.log(clickedSaveButton)
       console.log(textareaHTML)
       console.log(timeblockClass)
-
       savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
 
-      console.log(savedTextObj)
-      var stringObj = JSON.stringify(savedTextObj)
-      window.localStorage.setItem('savedSchedule', stringObj);
+      window.localStorage.setItem('savedTextObj', JSON.stringify(savedTextObj));
       
     })
   }
