@@ -17,7 +17,7 @@ $(function () {
   // current hour in 24-hour time?
   
   var hour = today.format('hh a');
-  console.log(hour)
+  console.log(hour);
 
   // compare each id to current time
     // make array of business hours
@@ -26,24 +26,24 @@ $(function () {
   // if id < current time, class = past
   // else, present
 
-  var businessHours = [9,10,11,12,1,2,3,4,5]
-  var hourIds = $('.time-block')
+  var businessHours = [9,10,11,12,1,2,3,4,5];
+  var timeblockClass = $('.time-block');
   for (i = 0; i < businessHours.length; i++)  {
     // at hour X compare if current
-    var hourTimeblock = hourIds[i]
-    var hourCompare = businessHours[i]
+    var hourId = timeblockClass[i].id;
+    var hourCompare = businessHours[i];
     if (hourCompare > hour) {
-      console.log("future")
+      console.log("future");
     } else if (hourCompare < hour) {
-      console.log("past")
+      console.log("past");
     } else {
-      console.log("present")
+      console.log("present");
     }
 
   }
 
-  console.log(hourIds)
-  console.log(hourTimeblock)
+  console.log(timeblockClass)
+  console.log(hourId)
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
