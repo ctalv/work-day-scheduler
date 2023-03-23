@@ -55,7 +55,7 @@ $(function () {
       console.log(textareaHTML)
       console.log(timeblockClass)
 
-      savedTextObj[textareaHTML.parentNode.id] = textareaHTML.textContent
+      savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
 
       console.log(savedTextObj)
       var stringObj = JSON.stringify(savedTextObj)
