@@ -33,7 +33,9 @@ $(function () {
       console.log(i)
       console.log(timeblockClass[i].id)
       for (j = 0; i < timeblockClass.length; i++) {
-        var compareObj = savedTextObj[Object.keys(savedTextObj)[j]];
+        var hoursObj = [9,10,11,12,1,2,3,4,5]
+        var compareObj = savedTextObj[timeblockClass[i].id]
+        console.log(compareObj)
         if (timeblockClass[i].id === compareObj) {
         console.log(timeblockClass[i].id)
         console.log('worked')
@@ -43,6 +45,7 @@ $(function () {
 
   }
 
+  console.log(compareObj)
 
   console.log(textArraySaved)
   console.log(savedTextObj)
@@ -91,9 +94,7 @@ $(function () {
 
   // on refresh, add the locally stored stuff back in their correct spots
 
-  function localStorage() {
 
-  }
 
 
   // TODO: Add code to apply the past, present, or future class to each time
