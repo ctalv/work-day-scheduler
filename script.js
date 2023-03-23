@@ -4,28 +4,22 @@
 $(function () {
   var today = dayjs();
   var timeblockClass = $('.time-block');
+  var saveButtontEl = $('button')
+
+  var textArraySaved = Array(timeblockClass.length)
+  console.log(textArraySaved)
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  function enterEvent() {
 
-
-  // identify which save button is pressed
-  // 
-
-  // var saveButtonEl = $('.btn')
-  var saveButtontEl = $('button')
-  var textareaEl = $('textarea')
   for (i = 0; i < 9; i++) {
     // at each button
     // create an event listener
     var button = saveButtontEl[i]
-    var singleTextarea = textareaEl[i]
-
-    console.log(singleTextarea)
-    console.log(button)
 
     button.addEventListener('click', function () {
       var clickedSaveButton = this.previousElementSibling.value;
@@ -33,8 +27,23 @@ $(function () {
       textareaHTML.textContent = clickedSaveButton
       console.log(clickedSaveButton)
 
+      localStorage.setItem('test', JSON.stringify(clickedSaveButton));
+      // 
+
     })
   }
+  
+}
+
+
+// check if anything in local storage and load in if there is
+// add to array anything that is saved in its correct spot
+// on refresh, add the locally stored stuff back in their correct spots
+
+function localStorage () {
+
+}
+
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -90,4 +99,5 @@ $(function () {
 
 
   colorCode();
+  enterEvent();
 });
