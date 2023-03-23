@@ -4,37 +4,82 @@
 $(function () {
   var today = dayjs();
   var timeblockClass = $('.time-block');
+  var saveButtontEl = $('button')
+
+  // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
+  var textArraySaved = Array(timeblockClass.length).fill("");
+
+  if (window.localStorage.getItem('savedTextObj') === null) {
+    var savedTextObj = {
+      'hour-9': '',
+      'hour-10': '',
+      'hour-11': '',
+      'hour-12': '',
+      'hour-1': '',
+      'hour-2': '',
+      'hour-3': '',
+      'hour-4': '',
+      'hour-5': '',
+    }
+  } else {
+    var savedTextObj = JSON.parse(localStorage.getItem("savedTextObj"))
+  }
+
+ 
+  console.log(textArraySaved)
+  console.log(savedTextObj)
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  function enterEvent() {
 
-
-  // identify which save button is pressed
-  // 
-
-  // var saveButtonEl = $('.btn')
-  var saveButtontEl = $('button')
-  var textareaEl = $('textarea')
   for (i = 0; i < 9; i++) {
     // at each button
     // create an event listener
     var button = saveButtontEl[i]
-    var singleTextarea = textareaEl[i]
-
-    console.log(singleTextarea)
-    console.log(button)
 
     button.addEventListener('click', function () {
       var clickedSaveButton = this.previousElementSibling.value;
       var textareaHTML = this.previousElementSibling;
       textareaHTML.textContent = clickedSaveButton
-      console.log(clickedSaveButton)
+      var index = $('.container-fluid').index(timeblockClass)
+      console.log(index)
+      console.log($('.container-fluid'))
 
+      console.log(textareaHTML.textContent)
+      console.log(textareaHTML.parentNode.id)
+      console.log(clickedSaveButton)
+      console.log(textareaHTML)
+      console.log(timeblockClass)
+
+      savedTextObj[textareaHTML.parentNode.id] = clickedSaveButton
+
+      console.log(savedTextObj)
+      var stringObj = JSON.stringify(savedTextObj)
+      window.localStorage.setItem('savedSchedule', stringObj);
+      
     })
   }
+  
+}
+
+
+// check if anything in local storage and load in if there is
+
+// add to array anything that is saved in its correct spot
+// figure out where in the DOM we are
+// in an array, add in that location
+// save array in local storage
+
+// on refresh, add the locally stored stuff back in their correct spots
+
+function localStorage () {
+
+}
+
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -90,4 +135,5 @@ $(function () {
 
 
   colorCode();
+  enterEvent();
 });
