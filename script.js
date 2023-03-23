@@ -27,8 +27,9 @@ $(function () {
       var clickedSaveButton = this.previousElementSibling.value;
       var textareaHTML = this.previousElementSibling;
       textareaHTML.textContent = clickedSaveButton
-
-      console.log($('.container-fluid').index(timeblockClass.index(textareaHTML)))
+      var index = $('.container-fluid').index(timeblockClass)
+      console.log(index)
+      console.log($('.container-fluid'))
 
       console.log(textareaHTML.textContent)
       console.log(textareaHTML.parentNode.id)
@@ -36,6 +37,17 @@ $(function () {
       console.log(textareaHTML)
       console.log(timeblockClass)
 
+      var savedTextObj = {
+        'hour-9': '',
+        'hour-10': '',
+        'hour-11': '',
+        'hour-12': '',
+        'hour-1': '',
+        'hour-2': '',
+        'hour-3': '',
+        'hour-4': '',
+        'hour-5': '',
+      }
 
 
       textArraySaved[0] = textareaHTML.textContent
