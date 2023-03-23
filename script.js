@@ -29,6 +29,8 @@ $(function () {
 
     button.addEventListener('click', function () {
       var clickedSaveButton = this.previousElementSibling.value;
+      var textareaHTML = this.previousElementSibling;
+      textareaHTML.textContent = clickedSaveButton
       console.log(clickedSaveButton)
 
     })
