@@ -113,26 +113,28 @@ $(function () {
         timeblockClass[i].classList.add("present")
         var indexPoint = i;
       }
-
-    }
-
-    for (i = 0; i < 9; i++) {
-      // if user is using webpage not during business hours
-      if (hour === (6 || 7 || 8 || 9 || 10 || 11) && amPm === 'pm') {
-        timeblockClass[indexPoint].classList.remove("present");
-        timeblockClass[i].classList.add("past");
-      } else if (hour === (12 || 1 || 2 || 3 || 4 || 5) && amPm === 'am') {
-        timeblockClass[indexPoint].classList.remove("present");
-        timeblockClass[i].classList.add("future");
-      } else {
-        // if user is using webpage during business hours
-        if (i < indexPoint) {
+      for (i = 0; i < 9; i++) {
+        // if user is using webpage not during business hours
+        if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
+          timeblockClass[indexPoint].classList.remove("present");
           timeblockClass[i].classList.add("past");
-        } else if (i > indexPoint) {
+        } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5) && (amPm === 'am')) {
+          timeblockClass[indexPoint].classList.remove("present");
           timeblockClass[i].classList.add("future");
+        } else {
+          // if user is using webpage during business hours
+          if (i < indexPoint) {
+            timeblockClass[i].classList.add("past");
+          } else if (i > indexPoint) {
+            timeblockClass[i].classList.add("future");
+          }
         }
       }
+
     }
+
+
+
 
   }
 
