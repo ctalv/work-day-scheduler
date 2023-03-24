@@ -112,7 +112,7 @@ $(function () {
       if (hourCompare === hourId) {
         timeblockClass[i].classList.add("present")
         var indexPoint = i;
-      }
+      
       for (i = 0; i < 9; i++) {
         // if user is using webpage not during business hours
         if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) {
@@ -129,6 +129,7 @@ $(function () {
             timeblockClass[i].classList.add("future");
           }
         }
+      }
       }
 
     }
