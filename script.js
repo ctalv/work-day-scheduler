@@ -55,8 +55,8 @@ $(function () {
 
     // TESTING HARDCODE
     // hourCompare = "hour-1";
-    // hour = 6
-    // amPm = 'am'
+    hour = 1
+    amPm = 'pm'
 
     var businessHours = [];
     var hourCompare = "hour-" + hour;
@@ -83,30 +83,31 @@ $(function () {
       console.log('3')
       console.log(hour)
       console.log(amPm)
-      // for (i = 0; i < timeblockClass.length; i++) {
+      for (i = 0; i < timeblockClass.length; i++) {
 
-      //   var hourId = timeblockClass[i].id;
-      //   businessHours.push(hourId);
-      //   console.log(i)
-      //   console.log(hourCompare)
-      //   console.log(hourId)
+        var hourId = timeblockClass[i].id;
+        businessHours.push(hourId);
+        console.log(i)
+        console.log(hourCompare)
+        console.log(hourId)
+        console.log(businessHours)
 
-      //   // compare if indexed hour is the same as current hour
-      //   if (hourCompare === hourId) {
-      //     timeblockClass[i].classList.add("present");
-      //     // indexPoint to build past and future off of
-      //     indexPoint = i;
-      //     console.log(indexPoint)
-      //   } else {
-      //     if (i < indexPoint) {
-      //       timeblockClass[i].classList.add("past");
-      //       console.log('past',i)
-      //     } else if (i > indexPoint) {
-      //       timeblockClass[i].classList.add("future");
-      //       console.log('future', i)
-      //     }
-      //   }
-      // }
+        // compare if indexed hour is the same as current hour
+        if (hourCompare === hourId) {
+          timeblockClass[i].classList.add("present");
+          // indexPoint to build past and future off of
+          var indexPoint = i;
+          console.log(indexPoint)
+        } else {
+          if (i > indexPoint) {
+            timeblockClass[i].classList.add("future");
+            console.log('future', i)
+          } else {
+            timeblockClass[i].classList.add("past");
+            console.log('past',i)
+          }
+        }
+      }
     }
   }
 
