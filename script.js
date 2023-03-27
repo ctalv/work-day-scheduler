@@ -49,6 +49,61 @@ $(function () {
   }
 
 
+  function colorCode() {
+    var hour = today.format('h');
+    var amPm = today.format('a');
+
+    // TESTING HARDCODE
+    // hourCompare = "hour-1";
+    hour = 6
+    amPm = 'pm'
+
+    var businessHours = [];
+    var hourCompare = "hour-" + hour;
+
+
+    console.log(hour)
+    console.log(amPm)
+
+    if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) { // evening
+      for (j = 0; j < timeblockClass.length; j++ ){
+      timeblockClass[j].classList.add("past");
+      console.log('1')
+      }
+    } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8) && (amPm === 'am')) { // morning
+      for (j = 0; j < timeblockClass.length; j++ ){
+        timeblockClass[j].classList.add("future");
+        console.log('2')
+        }
+    } else {
+      console.log('3')
+
+      // for (i = 0; i < timeblockClass.length; i++) {
+
+      //   var hourId = timeblockClass[i].id;
+      //   businessHours.push(hourId);
+      //   console.log(i)
+      //   console.log(hourCompare)
+      //   console.log(hourId)
+
+      //   // compare if indexed hour is the same as current hour
+      //   if (hourCompare === hourId) {
+      //     timeblockClass[i].classList.add("present");
+      //     // indexPoint to build past and future off of
+      //     indexPoint = i;
+      //     console.log(indexPoint)
+      //   } else {
+      //     if (i < indexPoint) {
+      //       timeblockClass[i].classList.add("past");
+      //       console.log('past',i)
+      //     } else if (i > indexPoint) {
+      //       timeblockClass[i].classList.add("future");
+      //       console.log('future', i)
+      //     }
+      //   }
+      // }
+    }
+  }
 
 
   /*
