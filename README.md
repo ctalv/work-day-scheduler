@@ -28,7 +28,7 @@ N/A
 
 ## Usage
 
-Webpage: https://ctalv.github.io/code_quiz/
+Webpage: https://ctalv.github.io/work_day_scheduler/
 
 ![Portfolio Screenshot](assets/images/screenshot.jpeg)
 
