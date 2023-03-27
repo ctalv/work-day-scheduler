@@ -55,8 +55,8 @@ $(function () {
 
     // TESTING HARDCODE
     // hourCompare = "hour-1";
-    hour = 6
-    amPm = 'pm'
+    // hour = 6
+    // amPm = 'am'
 
     var businessHours = [];
     var hourCompare = "hour-" + hour;
@@ -65,19 +65,24 @@ $(function () {
     console.log(hour)
     console.log(amPm)
 
-    if ((hour === 6 || 7 || 8 || 9 || 10 || 11) && (amPm === 'pm')) { // evening
+    if ((amPm === 'pm') && // evening
+    ((hour === 6) || (hour ===7) || (hour ===8) || (hour ===9) || (hour ===10) || (hour ===11) )) { 
       for (j = 0; j < timeblockClass.length; j++ ){
       timeblockClass[j].classList.add("past");
       console.log('1')
       }
-    } else if ((hour === 12 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8) && (amPm === 'am')) { // morning
+    } else if ((amPm === 'am') && // morning
+    ((hour === 12) || (hour ===1)||(hour===2)||(hour===3)||(hour===4)||(hour===5)||(hour===6)||(hour===7)||(hour===8))) { 
       for (j = 0; j < timeblockClass.length; j++ ){
         timeblockClass[j].classList.add("future");
         console.log('2')
+        console.log(hour)
+        console.log(amPm)
         }
     } else {
       console.log('3')
-
+      console.log(hour)
+      console.log(amPm)
       // for (i = 0; i < timeblockClass.length; i++) {
 
       //   var hourId = timeblockClass[i].id;
